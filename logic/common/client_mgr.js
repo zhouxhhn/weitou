@@ -2801,7 +2801,16 @@ client_mgr.prototype.getdetailedhandle = function (req, res) {
         return;
     }
 
-    server.web_mgr.getdetailed({}, function (data) {
+    var _msg = {
+        token: body.token,
+        startDate: body.startDate,
+        endDate: body.endDate,
+        boots: body.boots,
+        games: body.games,
+        hallType: body.hallType
+    };
+
+    server.web_mgr.getdetailed(_msg, function (data) {
         server.log(data);
         if (data == undefined) {
             var ret = {
