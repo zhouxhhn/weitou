@@ -283,7 +283,6 @@ web_mgr.prototype.phonebet = function (msg, cb) {
     this.webrpc(SW_MSG.PHONEBET, _msg, cb);
 };
 
-//1文字2下注3图片4表5图片表情6撤销下注
 web_mgr.prototype.chat = function (msg, cb) {
     var _msg = {
         "roomtype": msg.roomtype,
@@ -493,6 +492,11 @@ web_mgr.prototype.getcarousel = function (msg, cb) {
 web_mgr.prototype.getguide = function (msg, cb) {
     var _msg = {};
     this.webrpc(SW_MSG.GETGUIDE, _msg, cb);
+};
+
+web_mgr.prototype.getdetailed = function (msg, cb) {
+    var _msg = {};
+    this.webrpc(SW_MSG.GETDETAILED, _msg, cb);
 };
 
 module.exports = new web_mgr();

@@ -61,7 +61,7 @@ client_mgr.prototype.prepare = function (cb) {
     server.http.client_server.post("/getactivity", this.getactivityhandle.bind(this));
     server.http.client_server.post("/getcarousel", this.getcarouselhandle.bind(this));
     server.http.client_server.post("/getguide", this.getguidehandle.bind(this));
-
+    server.http.client_server.post("/getdetailed", this.getdetailedhandle.bind(this));
     cb();
 };
 
@@ -2773,5 +2773,64 @@ client_mgr.prototype.getguidehandle = function (req, res) {
         }
     });
 };
+
+client_mgr.prototype.getdetailedhandle = function (req, res) {
+    server.log("recv msg getdetailedhandle");
+    var body = req.body;
+    server.log(body);
+
+    var sign_data = server.fn.aes_decode(body.sign, server.CONST_SERVER.SERVER_KEY);
+    if (sign_data == undefined) {
+        server.log("ERR");
+        return;
+    }
+
+    var now = Date.now();
+    if ((now - sign_data.time) > server.CONST_SERVER.CLIENT_SIGN_EXPIRE) {
+        var ret = {
+            "status": "expire",  //succ or fail
+            "errmsg": ERR_MSG.SIGN_EXPIRE
+        };
+        server.log(ret);
+        res.send(ret);
+        return;
+    }
+
+    if (sign_data.userid == undefined) {
+        server.log("ERR");
+        return;
+    }
+
+    server.web_mgr.getdetailed({}, function (data) {
+        server.log(data);
+        if (data == undefined) {
+            var ret = {
+                "status": "fail",  //succ or fail
+                "errmsg": ERR_MSG.SERVER_CLOSE
+            };
+            server.log(ret);
+            res.send(ret);
+            return;
+        }
+        if (data.code == 0) {
+            var ret = {
+                "status": "succ",  //succ or fail
+                "errmsg": "", //提示
+                "data": data.data
+            };
+            server.log(ret);
+            res.send(ret);
+        }
+        else {
+            var ret = {
+                "status": "fail",  //succ or fail
+                "errmsg": data.errmsg //提示
+            };
+            server.log(ret);
+            res.send(ret);
+        }
+    });
+};
+
 
 module.exports = new client_mgr();
