@@ -2825,7 +2825,10 @@ client_mgr.prototype.getdetailedhandle = function (req, res) {
             var ret = {
                 "status": "succ",  //succ or fail
                 "errmsg": "", //提示
-                "data": data.data
+                "data": data.data,
+                "count": data.count,
+                "pageSize": data.pageSize,
+                "page":data.page
             };
             server.log(ret);
             res.send(ret);

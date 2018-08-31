@@ -72,9 +72,7 @@ web_mgr.prototype.webrpc = function (msgid, _msg, cb) {
             cb: cb
         };
         this.cb_list[cbid] = data;
-
         _msg.cbid = cbid;
-        //server.log(_msg);
         this.s.send(msgid, _msg);
     }
     else {
@@ -83,12 +81,10 @@ web_mgr.prototype.webrpc = function (msgid, _msg, cb) {
 };
 
 web_mgr.prototype.handlewebrpc = function (msg) {
-    //server.log(msg);
     var cbid = msg.cbid;
     var data = this.cb_list[cbid];
     if (data != undefined) {
         if (!!data.cb && typeof data.cb == "function") {
-            //server.log(msg);
             data.cb(msg);
         }
         delete this.cb_list[cbid];
@@ -495,8 +491,7 @@ web_mgr.prototype.getguide = function (msg, cb) {
 };
 
 web_mgr.prototype.getdetailed = function (msg, cb) {
-    var _msg = {};
-    this.webrpc(SW_MSG.GETDETAILED, _msg, cb);
+    this.webrpc(SW_MSG.GETDETAILED, msg, cb);
 };
 
 module.exports = new web_mgr();
