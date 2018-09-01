@@ -212,6 +212,5 @@ handler[WS_MSG.GETGUIDE] = function (msg, s) {
 };
 
 handler[WS_MSG.GETDETAILED] = function (msg, s) {
-    server.log("msg11=="+msg);
     server.web_mgr.handlewebrpc(msg);
 };

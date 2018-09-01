@@ -2803,11 +2803,8 @@ client_mgr.prototype.getdetailedhandle = function (req, res) {
 
     var _msg = {
         token: body.token,
-        startDate: body.startDate,
-        endDate: body.endDate,
-        boots: body.boots,
-        games: body.games,
-        hallType: body.hallType
+        page: body.page,
+        timeType: body.timeType
     };
 
     server.web_mgr.getdetailed(_msg, function (data) {
@@ -2826,6 +2823,8 @@ client_mgr.prototype.getdetailedhandle = function (req, res) {
                 "status": "succ",  //succ or fail
                 "errmsg": "", //提示
                 "data": data.data,
+                "transactionTotal": data.transactionTotal,
+                "balanceTotal": data.balanceTotal,
                 "count": data.count,
                 "pageSize": data.pageSize,
                 "page":data.page
