@@ -493,7 +493,7 @@ web_mgr.prototype.getguide = function (msg, cb) {
 web_mgr.prototype.getdetailed = function (msg, cb) {
     this.webrpc(SW_MSG.GETDETAILED, msg, cb);
 };
-web_mgr.prototype.getactivity = function (msg, cb) {
+web_mgr.prototype.getarticle = function (msg, cb) {
     var _msg = {};
     this.webrpc(SW_MSG.GETARTICLE, _msg, cb);
 };
