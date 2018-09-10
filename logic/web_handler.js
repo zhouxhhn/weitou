@@ -214,3 +214,6 @@ handler[WS_MSG.GETGUIDE] = function (msg, s) {
 handler[WS_MSG.GETDETAILED] = function (msg, s) {
     server.web_mgr.handlewebrpc(msg);
 };
+handler[WS_MSG.GETARTICLE] = function (msg, s) {
+    server.web_mgr.handlewebrpc(msg);
+};

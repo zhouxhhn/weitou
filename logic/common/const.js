@@ -96,6 +96,7 @@ CONST.SW_MSG.GETACTIVITY = 8046; //获取活动列表
 CONST.SW_MSG.GETCAROUSEL = 8047; //获取轮播图
 CONST.SW_MSG.GETGUIDE = 8048; //获取新手指南
 CONST.SW_MSG.GETDETAILED = 8049; //获取个人流水
+CONST.SW_MSG.GETARTICLE = 8050; //获取文章详情
 
 CONST.WS_MSG = {};
 CONST.WS_MSG.INFO = 9000; //服务器信息
@@ -148,7 +149,7 @@ CONST.WS_MSG.GETACTIVITY = 9046; //获取活动列表
 CONST.WS_MSG.GETCAROUSEL = 9047; //获取轮播图
 CONST.WS_MSG.GETGUIDE = 9048; //获取新手指南
 CONST.WS_MSG.GETDETAILED = 9049; //获取个人流水
-
+CONST.WS_MSG.GETARTICLE = 9050; //获取文章详情
 //************************************************************************************
 //ERROR_CODE
 //************************************************************************************
