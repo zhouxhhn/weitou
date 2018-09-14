@@ -194,6 +194,7 @@ client_mgr.prototype.loginhandle = function (req, res) {
                 "head": data.head,
                 "gold": data.gold,
                 "name": data.name,
+                "isFrontAdmin":data.isFrontAdmin,
                 "sign": user.sign
             };
             server.log(ret);
@@ -207,6 +208,7 @@ client_mgr.prototype.loginhandle = function (req, res) {
                 "head": "",
                 "gold": 0,
                 "name": "",
+                "isFrontAdmin":"",
                 "sign": ""
             };
             server.log(ret);
@@ -279,6 +281,7 @@ client_mgr.prototype.reloginhandle = function (req, res) {
                 "head": data.head,
                 "gold": data.gold,
                 "name": data.name,
+                "isFrontAdmin": data.isFrontAdmin,
                 "sign": user.sign
             };
             server.log(ret);
@@ -292,6 +295,7 @@ client_mgr.prototype.reloginhandle = function (req, res) {
                 "head": "",
                 "gold": 0,
                 "name": "",
+                "isFrontAdmin":"",
                 "sign": ""
             };
             server.log(ret);
